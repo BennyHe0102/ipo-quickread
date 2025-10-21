@@ -1,5 +1,8 @@
-from app.main import SessionLocal, Filing
+from app.main import SessionLocal, Filing, Base, engine
 from datetime import date
+
+# 关键：确保数据库里已创建所有表
+Base.metadata.create_all(bind=engine)
 
 db = SessionLocal()
 db.add(Filing(
